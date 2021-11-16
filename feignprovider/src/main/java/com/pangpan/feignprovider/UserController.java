@@ -1,6 +1,8 @@
 package com.pangpan.feignprovider;
 
+import com.pangpan.feignapi.feignapi.Person;
 import com.pangpan.feignapi.feignapi.UserApi;
+import org.apache.commons.lang.builder.ToStringBuilder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
@@ -54,6 +56,17 @@ public class UserController implements UserApi {
     public Map<Integer, String> getMap4(@RequestBody  Map<String, Object> map){
 
         return Collections.singletonMap(Integer.parseInt(map.get("id").toString()), map.get("name").toString());
+    }
+
+
+    @Override
+    @PostMapping("postPerson")
+    public Person postPerson(@RequestBody Person person){
+
+//        System.out.println(ToStringBuilder.reflectionToString(person));
+//        return Collections.singletonMap(person.getId(),person.getName());
+
+        return person;
     }
 
 }
