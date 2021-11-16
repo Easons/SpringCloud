@@ -2,10 +2,9 @@ package com.pangpan.feignconsumer.controller;
 
 import com.pangpan.feignconsumer.api.ConsumerApi;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.ws.rs.GET;
 import java.util.Collections;
 import java.util.Map;
 
@@ -48,5 +47,14 @@ public class MainController {
         // TODO Auto-generated method stub
         System.out.println(map);
         return consumerApi.getMap3(map);
+    }
+
+    /**
+     * Post请求
+     */
+    @GetMapping("/Map4")
+    public  Map<Integer, String> postMap4(@RequestParam Map<String, Object> map){
+
+        return consumerApi.postMap4(map);
     }
 }

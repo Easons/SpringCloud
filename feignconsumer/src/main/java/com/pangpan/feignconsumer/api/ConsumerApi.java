@@ -3,7 +3,11 @@ package com.pangpan.feignconsumer.api;
 import com.pangpan.feignapi.feignapi.UserApi;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Map;
 
 /**
  * @author pangpan
@@ -25,8 +29,18 @@ public interface ConsumerApi extends UserApi {
     @GetMapping("getMap")
     public  String getMap(@RequestParam(value = "Id") String Id);
 
+    @GetMapping("getMap3")
+    Map<Integer, String> getMap3(@RequestParam  Map<String, Object> map);
+
+    @PostMapping("postMap4")
+    Map<Integer, String> postMap4(@RequestBody  Map<String, Object> map);
+
 //    @GetMapping("/alive")
 //    public  String alive();
+
+
+
+
 
 
 }
