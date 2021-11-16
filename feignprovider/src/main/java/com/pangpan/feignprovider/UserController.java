@@ -2,7 +2,11 @@ package com.pangpan.feignprovider;
 
 import com.pangpan.feignapi.feignapi.UserApi;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Collections;
+import java.util.Map;
 
 /**
  * @author pangpan
@@ -17,6 +21,29 @@ public class UserController implements UserApi {
     public String alive()
     {
         return "ok";
+    }
+
+    @Override
+    @GetMapping("/getById")
+    public String getById(String s) {
+        return "ID="+s;
+    }
+
+    @GetMapping("getMap")
+    public  String getMap(@RequestParam(value = "Id") String Id){
+        return "Id="+ Id;
+    }
+
+    /**
+     * 多参数
+     * @param map
+     * @return
+     */
+    @GetMapping("/getMap3")
+    public Map<Integer, String> getMap3(@RequestParam Map<String, Object> map) {
+        // TODO Auto-generated method stub
+        System.out.println(map);
+        return Collections.singletonMap(Integer.parseInt(map.get("id").toString()), map.get("name").toString());
     }
 
 }
