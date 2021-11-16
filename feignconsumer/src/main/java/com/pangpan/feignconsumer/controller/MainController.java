@@ -1,5 +1,6 @@
 package com.pangpan.feignconsumer.controller;
 
+import com.pangpan.feignapi.feignapi.Person;
 import com.pangpan.feignconsumer.api.ConsumerApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -56,5 +57,19 @@ public class MainController {
     public  Map<Integer, String> postMap4(@RequestParam Map<String, Object> map){
 
         return consumerApi.postMap4(map);
+    }
+
+    /**
+     * Post请求
+     */
+    @GetMapping("/postPerson")
+    public  Person postPerson(@RequestParam Map<String, Object> map){
+
+        Person person = new Person();
+        person.setId(Integer.valueOf(map.get("id").toString()));
+        person.setName(map.get("name").toString());
+
+
+        return consumerApi.postPerson(person);
     }
 }
