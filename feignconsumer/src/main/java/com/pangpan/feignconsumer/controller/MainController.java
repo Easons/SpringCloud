@@ -22,6 +22,17 @@ public class MainController {
         return consumerApi.alive();
     }
 
+    @GetMapping("/getById")
+    public String getById(){
+        return consumerApi.getById("测试");
+    }
+
+
+    @GetMapping("/getMap")
+    public String getMap(){
+        return consumerApi.getMap("测试");
+    }
+
 
 
 }

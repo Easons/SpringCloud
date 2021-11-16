@@ -3,6 +3,7 @@ package com.pangpan.feignconsumer.api;
 import com.pangpan.feignapi.feignapi.UserApi;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @author pangpan
@@ -14,6 +15,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 //另外一种写法，去eureka里面找这个名字的远程服务
 @FeignClient(name = "feignprovider")
 public interface ConsumerApi extends UserApi {
+
+
+    /**
+     * 此处的GetMapping 是给 Feign 看的，用来组装url
+     * @param Id
+     * @return
+     */
+    @GetMapping("getMap")
+    public  String getMap(@RequestParam(value = "Id") String Id);
 
 //    @GetMapping("/alive")
 //    public  String alive();
