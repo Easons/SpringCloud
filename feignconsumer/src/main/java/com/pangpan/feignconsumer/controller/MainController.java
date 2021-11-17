@@ -5,8 +5,6 @@ import com.pangpan.feignconsumer.api.ConsumerApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.ws.rs.GET;
-import java.util.Collections;
 import java.util.Map;
 
 /**
@@ -18,6 +16,7 @@ public class MainController {
 
     @Autowired
     ConsumerApi consumerApi;
+
 
 
     @GetMapping("/alive")
